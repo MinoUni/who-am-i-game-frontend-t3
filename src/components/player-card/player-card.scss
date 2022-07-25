@@ -45,6 +45,12 @@
   &__assigned-character {
     background-color: $modals-background;
     color: $secondary-background-blue;
+    text-transform: uppercase;
+
+    &_active {
+      background-color: $btn-green;
+      color: $font-black;
+    }
   }
 
   &__card-avatar {
@@ -52,6 +58,12 @@
     height: 48px;
     border-radius: 50%;
     margin-right: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    &_active {
+      border: 8px solid $btn-green;
+    }
   }
 
   &__status {

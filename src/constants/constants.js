@@ -8,7 +8,9 @@ const NUMBER_OF_PLAYERS = 4;
 const READY = 'READY';
 const NOT_READY = 'NOT_READY';
 const ASKING = 'ASKING';
+const ASKED = 'ASKED';
 const ANSWERING = 'ANSWERING';
+const ANSWERED = 'ANSWERED';
 const FINISHED = 'FINISHED';
 const YES = 'YES';
 const NO = 'NO';
@@ -16,6 +18,7 @@ const NOT_SURE = 'NOT_SURE';
 const GUESSING = 'GUESSING';
 const WAITING = 'WAITING';
 const RESPONSE = 'RESPONSE';
+const LOST = 'LOST';
 
 const MAIN_LOBBY = '/main-lobby';
 const GAME_LOBBY = '/game-lobby';
@@ -84,4 +87,7 @@ export {
   RESTORE,
   NEW_PASSWORD,
   PROFILE,
+  ASKED,
+  ANSWERED,
+  LOST,
 };
