@@ -20,7 +20,7 @@ function Loading() {
     <ScreenWrapper>
       <GameTitle />
       <h3 className="loading__queue-number">
-        {gameData.players && gameData.players.length} PLAYERS ARE IN QUEUE
+        {gameData.players && gameData.players.length} PLAYERS ARE IN A QUEUE
       </h3>
       <h3 className="loading__waiting-message">
         PLEASE WAIT UNTIL WE FIND YOUR OPPONENTS
