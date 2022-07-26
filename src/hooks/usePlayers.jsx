@@ -33,8 +33,8 @@ export default function usePlayers() {
 
   useEffect(() => {
     sessionStorage.setItem('avatar', currentPlayer?.avatar);
-    sessionStorage.setItem('name', currentPlayer?.nickname);
-  }, [currentPlayer?.avatar, currentPlayer?.nickname]);
+    sessionStorage.setItem('name', currentPlayer?.name);
+  }, [currentPlayer?.avatar, currentPlayer?.name]);
 
   return playersData;
 }
