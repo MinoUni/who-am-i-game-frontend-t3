@@ -11,12 +11,12 @@ import GameDataContext from '../../contexts/game-data-context';
 import { suggestCharacter } from '../../services/games-service';
 import useGameData from '../../hooks/useGameData';
 import usePlayers from '../../hooks/usePlayers';
+import { NOT_READY, READY } from '../../constants/constants';
 
 function Lobby() {
   const { gameData, playerId } = useContext(GameDataContext);
   const [leaveModalActive, setLeaveModalActive] = useState(false);
   const [suggestModalActive, setSuggestModalActive] = useState(false);
-  const [suggestBtn, setSuggestBtn] = useState(true);
 
   useGameData();
   const { currentPlayer, playersWithoutCurrent } = usePlayers();
@@ -30,7 +30,6 @@ function Lobby() {
         characterName.trim()
       );
       setSuggestModalActive(false);
-      setSuggestBtn(false);
     },
     [playerId, gameData.id]
   );
@@ -48,7 +47,7 @@ function Lobby() {
                     avatarClassName={currentPlayer.avatar}
                     name={currentPlayer.name}
                     playerStatusClassName={
-                      currentPlayer.suggestStatus ? 'yes' : 'unsure'
+                      currentPlayer.playerState === READY ? 'yes' : 'unsure'
                     }
                     isYou
                   />
@@ -59,13 +58,13 @@ function Lobby() {
                     avatarClassName={player.avatar}
                     name={player.name}
                     playerStatusClassName={
-                      player.suggestStatus ? 'yes' : 'unsure'
+                      player.playerState === READY ? 'yes' : 'unsure'
                     }
                   />
                 ))}
               </div>
               <div className="input-screen__btn-wrapper">
-                {suggestBtn && currentPlayer && (
+                {currentPlayer.playerState === NOT_READY && (
                   <Btn
                     className={['btn-green-solid']}
                     onClick={() => setSuggestModalActive(true)}
@@ -95,7 +94,7 @@ function Lobby() {
         />
         {currentPlayer && (
           <SelectCharacterModal
-            player={currentPlayer.nickname}
+            player={currentPlayer.name}
             active={suggestModalActive}
             onSubmit={submitCharacter}
             onCancel={() => setSuggestModalActive(false)}
