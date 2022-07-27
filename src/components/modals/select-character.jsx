@@ -41,6 +41,7 @@ function SelectCharacterModal({
         <input
           className="modal__input-field"
           type="text"
+          placeholder="Enter your nickname"
           minLength="2"
           maxLength="50"
           value={playerName}

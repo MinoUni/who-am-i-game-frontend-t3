@@ -1,11 +1,12 @@
 import ModalContext from '../../contexts/modal-context';
 import Btn from '../btn/btn';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import './question-form.scss';
 import { useCallback } from 'react';
 
 function QuestionForm({ disabled, onSubmit }) {
   const setModalActive = useContext(ModalContext)[1];
+  const [question, setQuestion] = useState('');
 
   const handleSubmit = useCallback(
     (event) => {
@@ -27,6 +28,13 @@ function QuestionForm({ disabled, onSubmit }) {
           type="text"
           placeholder="Type your question"
           maxLength="256"
+          minLength="2"
+          pattern="^[^\s]+(\s.*)?$"
+          value={question}
+          onChange={(e) => {
+              const rules = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+              setQuestion(rules);
+          }}
         />
         <button disabled={disabled} type="submit" className="btn btn_ask">
           Ask
