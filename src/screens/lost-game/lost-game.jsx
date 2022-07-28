@@ -11,10 +11,15 @@ function LostGame() {
   return (
     <ScreenWrapper>
       <GameTitle />
-      <PlayerCard avatarClassName={'avatar01'} name={'GreenDean'} />
+      <PlayerCard
+        avatarClassName={sessionStorage.getItem('avatar')}
+        name={sessionStorage.getItem('name')}
+      />
       <h3 className="lost-game-screen-message">
         OOPS, YOU HAVE LOST THE GAME.TRY BETTER NEXT TIME. YOUR CHARACTER WAS{' '}
-        <span className="lost-game-screen-message-character">ANGLINA JLIE</span>
+        <span className="lost-game-screen-message-character">
+          {sessionStorage.getItem('character')}
+        </span>
       </h3>
       <Btn
         className={'btn-blue-outline'}

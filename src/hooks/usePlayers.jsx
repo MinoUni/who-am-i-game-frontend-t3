@@ -32,9 +32,12 @@ export default function usePlayers() {
   const { currentPlayer } = playersData;
 
   useEffect(() => {
-    sessionStorage.setItem('avatar', currentPlayer?.avatar);
-    sessionStorage.setItem('name', currentPlayer?.name);
-  }, [currentPlayer?.avatar, currentPlayer?.name]);
+    if (currentPlayer) {
+      sessionStorage.setItem('avatar', currentPlayer.avatar);
+      sessionStorage.setItem('name', currentPlayer.nickname);
+      sessionStorage.setItem('character', currentPlayer.character);
+    }
+  }, [currentPlayer]);
 
   return playersData;
 }
