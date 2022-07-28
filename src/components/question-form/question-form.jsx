@@ -32,7 +32,7 @@ function QuestionForm({ disabled, onSubmit }) {
           pattern="^[^\s]+(\s.*)?$"
           value={question}
           onChange={(e) => {
-              const rules = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+              const rules = e.target.value.replace(/[^а-яА-Яa-zA-Z.,!? ()\s]/g, '');
               setQuestion(rules);
           }}
         />
