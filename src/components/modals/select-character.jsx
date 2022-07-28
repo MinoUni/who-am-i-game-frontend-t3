@@ -46,7 +46,7 @@ function SelectCharacterModal({
           maxLength="50"
           value={playerName}
           onInput={(e) => {
-            const rules = e.target.value.replace(/[^а-яА-Яa-zA-Z\s]/g, '');
+            const rules = e.target.value.replace(/[^а-яіїєґА-ЯІЇЄҐa-zA-Z\s]/g, '');
             setPlayerName(rules);
           }}
         />
@@ -58,7 +58,7 @@ function SelectCharacterModal({
           maxLength="50"
           value={characterName}
           onInput={(e) => {
-            const rules = e.target.value.replace(/[^а-яА-Яa-zA-Z\s]/g, '');
+            const rules = e.target.value.replace(/[^а-яіїєґА-ЯІЇЄҐa-zA-Z\s]/g, '');
             setCharacterName(rules);
           }}
         />
