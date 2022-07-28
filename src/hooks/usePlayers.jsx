@@ -34,7 +34,7 @@ export default function usePlayers() {
   useEffect(() => {
     if (currentPlayer) {
       sessionStorage.setItem('avatar', currentPlayer.avatar);
-      sessionStorage.setItem('name', currentPlayer.nickname);
+      sessionStorage.setItem('name', currentPlayer.name);
       sessionStorage.setItem('character', currentPlayer.character);
     }
   }, [currentPlayer]);
