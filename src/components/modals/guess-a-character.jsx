@@ -34,7 +34,7 @@ function GuessCharacterModal({ active, onSubmit, onCancel, onTimerFinish }) {
           placeholder="Enter your guess"
           value={guess}
           onChange={(e) => {
-            const rules = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+            const rules = e.target.value.replace(/[^а-яА-Яa-zA-Z\s]/g, '');
             setGuess(rules);
           }}
           pattern="^[^\s]+(\s.*)?$"
