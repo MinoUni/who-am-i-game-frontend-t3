@@ -3,6 +3,7 @@ import convertTime from '../../../helper-functions/convert-time';
 import clsx from 'clsx';
 import '../timer.scss';
 import useTimer from '../../../hooks/useTimer';
+import { useRef } from 'react';
 
 function CountdownTimer({
   inLobby,
@@ -14,10 +15,7 @@ function CountdownTimer({
   disableSessionTracker,
 }) {
   const [seconds, setSeconds] = useState(time);
-
-  useEffect(() => {
-    setSeconds(time);
-  }, [time]);
+  const firstRenderRef = useRef(false);
 
   useEffect(() => {
     if (disableSessionTracker) {
@@ -31,7 +29,12 @@ function CountdownTimer({
       const result = seconds - Math.floor(diff / 1000);
 
       setSeconds(result > 0 ? result : 0);
-      sessionStorage.removeItem('timer');
+
+      if (firstRenderRef.current || process.env.NODE_ENV === 'production') {
+        sessionStorage.removeItem('timer');
+      }
+    } else {
+      setSeconds(time);
     }
 
     function onBeforeUnload(e) {
@@ -49,8 +52,9 @@ function CountdownTimer({
 
     return () => {
       window.removeEventListener('beforeunload', onBeforeUnload);
+      firstRenderRef.current = true;
     };
-  }, [disableSessionTracker]);
+  }, [disableSessionTracker, time]);
 
   useTimer(() => {
     if (paused || seconds === 0) {
